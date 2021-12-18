@@ -61,14 +61,30 @@
     .dropdown .dropdown-menu{
         width: 180px;
     }
+
+    i{
+      font-style: normal;
+    }
+    @media screen and (max-width:768px) {
+      
+        .row-section{
+            flex-direction: column;
+        }
+        .dropdown{
+            margin-bottom:10px;
+            margin-bottom: 10px;
+        }
+    }
 </style>
 {%endblock%}
 
 {%block content%}
 <h3 style='text-align: center;font-family:Poppins;'>Project repository recommendation</h3>
 <div class='row-section'>
-    <h5>Sort by</h5>
+  <div>
+    <i>Sort by</i>
     <i style='margin-right: 20px;margin-left:10px' class='fa fa-sort'></i>
+</div>
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Stars
         <span class="caret"></span></button>
