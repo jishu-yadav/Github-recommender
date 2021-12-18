@@ -1,9 +1,55 @@
 {%extends 'base.html'%}
 {%load static%}
 {%block headtag%}
+
 <title>Homepage</title>
+<style>
+
+.bg {
+  
+  background-image: url("/static/images/bg.png");
+  height: 90%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+</style>
+
 {%endblock%}
 
 {%block content%}
-<img src="{%static '\images\bg.png'%}">
+<div class="centered">
+  <h1>EXPLORE <h1>
+  <h1>GITHUB</h1>
+  <h2>one stop plateform for all your </h2>
+  <h2>opensource needs...!</h2>
+</div>
+<div class="bg"></div>
+<!-- <header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">HOME</a>
+   
+    <div class="collapse navbar-collapse" id="navbarText" style="float: right">
+      <ul class="navbar-nav mr-auto">
+        <span style="display:inline; width: 1px;">
+          <li class="nav-item"  >
+            <a class="nav-link" href="#">Find Projects </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Find Contributors</a>
+          </li></span>
+        
+      </ul>
+      
+    </div>
+  </nav>
+
+</header> -->
+<!-- <img src="{%static '\images\bg.png'%}"> -->
 {%endblock%}
