@@ -1,55 +1,135 @@
 {%extends 'base.html'%}
 {%load static%}
 {%block headtag%}
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Homepage</title>
 <style>
 
 .bg {
   
   background-image: url("/static/images/bg.png");
-  height: 90%; 
+  height: 80%;
+  /* min-height:100%; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
-.centered {
+/* .centered {
   position: absolute;
   top: 50%;
   left: 20%;
   transform: translate(-50%, -50%);
+} */
+body{
+    margin: 0;
 }
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  /* background-color: #33b5e5; */
+  color:black;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+.aside {
+  background-color: #33b5e5;
+  padding: 15px;
+  color: black;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+
+/*mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /*tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /*  desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
 </style>
 
 {%endblock%}
 
 {%block content%}
-<div class="centered">
-  <h1>EXPLORE <h1>
-  <h1>GITHUB</h1>
-  <h2>one stop plateform for all your </h2>
-  <h2>opensource needs...!</h2>
-</div>
-<div class="bg"></div>
-<!-- <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">HOME</a>
-   
-    <div class="collapse navbar-collapse" id="navbarText" style="float: right">
-      <ul class="navbar-nav mr-auto">
-        <span style="display:inline; width: 1px;">
-          <li class="nav-item"  >
-            <a class="nav-link" href="#">Find Projects </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Find Contributors</a>
-          </li></span>
-        
-      </ul>
-      
-    </div>
-  </nav>
 
-</header> -->
-<!-- <img src="{%static '\images\bg.png'%}"> -->
+<div class="row">
+ 
+  
+
+  <div class="col-12 col-s-12">
+    <div class="bg">
+      <div class="col-4 col-s-3 menu">
+        <ul>
+          <li><h2>Explore Github.<br></h2></li>
+          <li><h2>one stop plateform for all</h2> </li>
+          <li><h2>your Opensource needs...!</h2></li>
+        </ul>
+      </div>
+    </div>
+    
+    
+  </div>
+
+</div>
+
+
 {%endblock%}
