@@ -5,7 +5,7 @@ from django.http import HttpRequest,HttpResponse
 def index(request):
     return render(request,'index.html')
 
-def repo_res(request):
+def repo_rec(request):
     return render(request,'repo_rec.html')
 
 def form_contributors_res(request):
@@ -14,4 +14,5 @@ def form_contributors_res(request):
 def form_res(request):
     return render(request,'form.html')
 
-
+def user_rec(request):
+    return render(request,'user_rec.html')
