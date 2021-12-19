@@ -2,6 +2,7 @@ from django.db import models
 from separatedvaluesfield.models import SeparatedValuesField
 # Create your models here.
 class Repository(models.Model):
+    
     full_name=models.CharField(max_length=500,blank=True)
     owner_name=models.CharField(max_length=500,blank=True)
     repo_url=models.URLField(max_length=500,blank=True)
@@ -11,7 +12,10 @@ class Repository(models.Model):
     open_issues=models.IntegerField(default=0)
     forks_count=models.IntegerField(default=0)
     stargazers_count=models.IntegerField(default=0)
-    content=SeparatedValuesField(max_length=800,token=',',blank=True)
+    description=models.TextField(blank=True)
+    topics=models.TextField(blank=True)
+    language=models.TextField(blank=True)
+    content=models.TextField(blank=True)
     
 
 
