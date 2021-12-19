@@ -1,0 +1,250 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block headtag%}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form</title>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
+  background-size: cover;
+  height:100%;
+}
+h2.headertekst {
+  text-align: center;
+  font-weight: bold;
+}
+#feedback-page{
+	text-align:center;
+}
+
+#form-main{
+	width:100%;
+	float:left;
+	padding-top:0px;
+}
+
+#form-div {
+	background-color:rgba(72,72,72,0.4);
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:35px;
+	padding-bottom:50px;
+	width: 450px;
+	float: left;
+	left: 50%;
+	position: absolute;
+  margin-top:30px;
+	margin-left: -260px;
+
+}
+
+.feedback-input {
+	color:#3c3c3c;
+	font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+	font-size: 18px;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #fbfbfb;
+	padding: 13px 13px 13px 54px;
+	margin-bottom: 10px;
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #3498db;
+	color: #3498db;
+	outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused{
+	color:#30aed6;
+	border:#30aed6 solid 3px;
+}
+
+/* Icons ---------------------------------- */
+#name{
+	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#name:focus{
+	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+	background-size: 30px 30px;
+	background-position: 8px 5px;
+  background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#topic{
+	background-image: url(http://rexkirby.com/kirbyandson/images/topic.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#topic:focus{
+	background-image: url(http://rexkirby.com/kirbyandson/images/topic.svg);
+	background-size: 30px 30px;
+  background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+/* #comment{
+	background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+} */
+
+textarea {
+    width: 100%;
+    height: 150px;
+    line-height: 150%;
+    resize:vertical;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	background-color:white;
+}
+
+#button-blue{
+    /* width: 200px; */
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	float:left;
+	width: 100%;
+	border: #fbfbfb solid 4px;
+	cursor:pointer;
+	background-color: #3498db;
+	color:black;
+	font-size:24px;
+	padding-top:22px;
+	padding-bottom:22px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+.ease {
+	width: 0px;
+	height: 74px;
+	background-color: #fbfbfb;
+	-webkit-transition: .3s ease;
+	-moz-transition: .3s ease;
+	-o-transition: .3s ease;
+	-ms-transition: .3s ease;
+	transition: .3s ease;
+}
+
+
+@media only screen and (max-width: 580px) {
+	#form-div{
+		left: 3%;
+		margin-right: 3%;
+		width: 88%;
+		margin-left: 0;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+}
+</style>
+		<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+	</script>
+
+		<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js">
+		</script>
+		<link rel="stylesheet"
+			href=
+"https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css" />
+
+		<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js">
+	</script>
+		<link rel="stylesheet"
+			href=
+"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" />
+		<script>
+			$(document).ready(function () {
+				
+				$(".lang").select2({
+					maximumSelectionLength: 10,
+				});
+				// $(".topic").chosen({
+				// 	max_selected_options: 10,
+				// });
+        //         $(".descrip").chosen({
+				// 	max_selected_options: 10,
+				// });
+			});
+		</script>
+	{%endblock%}
+	{%block content%}
+		<form>
+            
+           
+            <div id="form-main">
+             
+                <div id="form-div">
+                  <h2  class="headertekst"> Find Contributors:</h2>
+                  <form class="form" id="form1">
+                    
+                    <p class="name">
+                      <h4>Select Language</h4>
+                      <select class="lang"multiple="true"style="width: 100%;">
+                        <option value="1">Python</option>
+                        <option value="2">Java</option>
+                        <option value="3">C</option>
+                        <option value="4">C++</option>
+                      </select>
+      
+                      </p>
+  
+                    <p class="topic">
+                      <h4>Select topic</h4>
+                      <select class="lang"multiple="true"style="width: 100%;">
+                            <option value="1">Django</option>
+                            <option value="2">Hacktoberfest</option>
+                            <option value="3">MERN</option>
+                            <option value="4">TensorFlow</option>
+                            <option value="5">Flask</option>
+                            <option value="6">Spring</option>
+                      </select>
+      
+                    </p>
+                    <p class="descrip">
+                      <h4>Description</h4>
+                      <select class="lang"multiple="true"style="width: 100%">
+                        <option value="1">Django related projects</option>
+                        <option value="2">Hacktoberfest related projects</option>
+                        <option value="3">MERN stack related projects</option>
+                        <option value="4">TensorFlow related projects</option>
+                        <option value="5">Flask related projects</option>
+                        <option value="6">Spring related projects</option>
+                      </select>
+                    </p>
+              
+                    <div class="submit">
+                      <input type="submit" value="SEND" id="button-blue"/>
+                      <div class="ease"></div>
+                    </div>
+                  </form>
+                </div>
+		</form>
+        {%endblock%}
+
