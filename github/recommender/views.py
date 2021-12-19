@@ -22,5 +22,11 @@ def repo_rec(request):
     #print(list_repo)
     return render(request,'repo_rec.html')
 
+def form_contributors_res(request):
+    return render(request,'form_contributors.html')
+    
+def form_res(request):
+    return render(request,'form.html')
+
 def user_rec(request):
     return render(request,'user_rec.html')
