@@ -181,70 +181,73 @@ input:focus, textarea:focus {
 "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" />
 		<script>
 			$(document).ready(function () {
-				
+				var languages
 				$(".lang").select2({
 					maximumSelectionLength: 10,
 				});
+				$(".lang").on('change',function(){
+					 languages=$(".lang option:selected").text()
+					 
+					 $('.data').val(languages)
+				})
+				
 				// $(".topic").chosen({
 				// 	max_selected_options: 10,
 				// });
         //         $(".descrip").chosen({
 				// 	max_selected_options: 10,
 				// });
+				
 			});
+
+			console.log($('.data').value)
+
 		</script>
 	{%endblock%}
 	{%block content%}
-		<form>
+		
             
            
             <div id="form-main">
              
                 <div id="form-div">
                   <h2  class="headertekst"> Find Projects:</h2>
-                  <form class="form" id="form1">
-                    
-                    <p class="name">
-                      <h4>Select Language</h4>
-                      <select class="lang"multiple="true"style="width: 100%;">
-                        <option value="1">Python</option>
-                        <option value="2">Java</option>
-                        <option value="3">C</option>
-                        <option value="4">C++</option>
-                      </select>
-      
-                      </p>
-  
-                    <p class="topic">
-                      <h4>Select topic</h4>
-                      <select class="lang"multiple="true"style="width: 100%;">
-                            <option value="1">Django</option>
-                            <option value="2">Hacktoberfest</option>
-                            <option value="3">MERN</option>
-                            <option value="4">TensorFlow</option>
-                            <option value="5">Flask</option>
-                            <option value="6">Spring</option>
-                      </select>
-      
-                    </p>
-                    <p class="descrip">
-                      <h4>Description</h4>
-                      <select class="lang"multiple="true"style="width: 100%">
-                        <option value="1">Django related projects</option>
-                        <option value="2">Hacktoberfest related projects</option>
-                        <option value="3">MERN stack related projects</option>
-                        <option value="4">TensorFlow related projects</option>
-                        <option value="5">Flask related projects</option>
-                        <option value="6">Spring related projects</option>
-                      </select>
-                    </p>
-              
-                    <div class="submit">
-                      <input type="submit" value="SEND" id="button-blue"/>
-                      <div class="ease"></div>
-                    </div>
+                  <form action="{% url 'repo_rec' %}" method="POST" >
+                    {% csrf_token %}
+					<p class="name">
+						<h4>Select Language</h4>
+						<select class="lang"multiple="true"style="width: 100%;">
+						  {%for lang in lang_token%}
+							  <option value="1">{{ lang }}</option>
+							  
+							  {%endfor%}
+						</select>
+					
+						</p>
+					
+					  <p class="topic">
+						<h4>Select topic</h4>
+						<select class="lang"multiple="true"style="width: 100%;">
+							  {%for topic in token_list%}
+							  <option value="1">{{ topic }}</option>
+							  
+							  {%endfor%}
+						</select>
+					
+					  </p>
+					  <p class="descrip">
+						  <h4>Description</h4>
+						<textarea name='desc'></textarea>
+						
+					  </p>
+					  <input type="hidden" value="" class="data" name="data"/>
+					  <input type="submit" value="SEND" id="button-blue"/>
+					  
+					
+
+                     
                   </form>
                 </div>
-		</form>
-        {%endblock%}
+		
+    {%endblock%}
 

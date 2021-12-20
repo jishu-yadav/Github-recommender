@@ -21,7 +21,7 @@
     }
     .card-title{
         color:#3d5a80;
-        font-size:20px;
+        font-size:18px;
         font-weight: bold;
     }
     .card-subtitle{
@@ -124,27 +124,28 @@
 </div>
 
 <div class='row-section'>
+  {% for repo in repo_list %}
     <div class='col-sm-4'>
         <div class="card" >
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">By Card subtitle</h6>
-              <h6 style='font-size:12px;' class="card-subtitle mb-2 text-muted">created at 10 jan 2000</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">{{ repo.0 }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">By {{repo.1}}</h6>
+              <h6 style='font-size:12px;' class="card-subtitle mb-2 text-muted">created at {{repo.4}}</h6>
+              <p class="card-text">{{repo.11}}</p>
               <div>
-                  <i class='fa fa-star icon'></i> <i class='icon-text'>12 stars</i>
-                  <i class='fa fa-eye icon'> </i> <i class='icon-text'>12 views</i>
-                  <i class='fa fa-code-fork icon'> </i> <i class='icon-text'>12 forks</i>
-                  <i class='fa fa-bug icon'></i> <i class='icon-text'>12 open issues</i>
+                  <i class='fa fa-star icon'></i> <i class='icon-text'>{{repo.5}}stars</i>
+                  <i class='fa fa-eye icon'> </i> <i class='icon-text'>{{repo.6}} views</i>
+                  <i class='fa fa-code-fork icon'> </i> <i class='icon-text'>{{repo.7}} forks</i>
+                  <i class='fa fa-bug icon'></i> <i class='icon-text'>{{repo.8}} open issues</i>
               </div>
               
               <div style="display: flex;flex-direction: row;margin-top:8px">
                   <p style='margin-right:10px;color:#E0FBFC;font-size:12px;'>languages used: </p>
-                  <p style='font-size:12px;'>css,html,python</p>
+                  <p style='font-size:12px;'>{{repo.9}}</p>
               </div>
               <div style="display: flex;flex-direction: row">
                 <p style='margin-right:10px;color:#E0FBFC;font-size:12px;'>Topics: </p>
-                <p style='font-size:12px;'>css,html,python</p>
+                <p style='font-size:12px;'>{{repo.10}}</p>
             </div>
               <a href="#" class="card-link">visit website</a>
              
@@ -152,29 +153,7 @@
         </div>
         
     </div>
-    <div class='col-sm-4'>
-        <div class="card" >
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-        
-    </div>
-    <div class='col-sm-4'>
-        <div class="card" >
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-        
-    </div>
+    {%endfor%}
+    
 </div>
 {%endblock%}

@@ -2,16 +2,16 @@ import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from .models import Repository
+from .models import *
 import gensim
 from gensim.parsing.preprocessing import preprocess_documents
 
-df=pd.DataFrame((list(Repository.objects.all().values())))
+df=pd.DataFrame((list(GithubRepos.objects.all().values())))
 def fit(keywords):
   df['description'].fillna('').astype(str)
-  df['content']=df['content'].map(str)
+  df['languages']=df['languages'].map(str)
 
-  text_corpus = df['content'].values
+  text_corpus = df['languages'].values
 
   processed_corpus = preprocess_documents(text_corpus)
   dictionary = gensim.corpora.Dictionary(processed_corpus)
@@ -49,9 +49,15 @@ def recommendations(dictionary,tfidf,index,lsi,desc):
   vec_lsi = lsi[vec_bow_tfidf]
 
   sims = index[vec_lsi]
+  repo_det=[]
 
   for s in sorted(enumerate(sims), key=lambda item: -item[1])[:10]:
-    print(df["full_name"].iloc[s[0]] , {str(s[1])})
+    repo_det.append([df["full_name"].iloc[s[0]],df["owner"].iloc[s[0]],df["github_url"].iloc[s[0]],df["homepage"].iloc[s[0]],
+    df["created_at"].iloc[s[0]],df["fork_counts"].iloc[s[0]],df["open_issues"].iloc[s[0]],df["stargazers_count"].iloc[s[0]],
+    df["watchers"].iloc[s[0]],df["content"].iloc[s[0]],df["topics"].iloc[s[0]],df["description"].iloc[s[0]]])
+    #print(df["full_name"].iloc[s[0]] , {str(s[1])})
+
+  return repo_det
   """contributor_index = get_index_from_owner(desc)
   #print(desc)
   print(contributor_index)
