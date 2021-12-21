@@ -6,7 +6,7 @@
     .row-section{
         display: flex;
         justify-content: center;
-        align-items: center;
+       
         flex-wrap: wrap;
         padding-top:20px
     }
@@ -17,11 +17,16 @@
         margin-bottom:20px;
         border-radius:10px;
         box-shadow: 10px 10px 18px -10px rgba(0,0,0,0.75);
+        width:31%;
+        margin-left:20px;
+        display: flex;
+        flex-direction: column;
+       
 
     }
     .card-title{
         color:#3d5a80;
-        font-size:18px;
+        font-size:17px;
         font-weight: bold;
     }
     .card-subtitle{
@@ -45,6 +50,7 @@
     }
     .dropdown{
         margin-right:20px;
+        padding-bottom: 10px;
         
     }
     .dropdown .btn{
@@ -65,15 +71,45 @@
     i{
       font-style: normal;
     }
-    @media screen and (max-width:768px) {
+    .flexible{
+      flex-grow: 1;
+    }
+    @media screen and (max-width:877px) {
+      
+      
+      .dropdown{
+          margin-bottom:10px;
+          margin-bottom: 10px;
+      }
+      .card{
+         width:45%;
+      }
+  }
+    @media screen and (max-width:508px) {
       
         .row-section{
+          align-items: center;
             flex-direction: column;
         }
         .dropdown{
-            margin-bottom:10px;
-            margin-bottom: 10px;
+            margin-bottom:10px !important;
+           
         }
+        .card{
+          width:90%;
+          margin-left: 0px !important;
+        }
+    }
+    .outer{
+      
+      display: flex;
+      
+      flex-wrap: wrap;
+    }
+    .inner{
+      width:45%;
+      flex-direction: row;
+      display: flex;
     }
 </style>
 {%endblock%}
@@ -123,12 +159,15 @@
       </div>
 </div>
 
-<div class='row-section'>
-  {% for repo in repo_list %}
-    <div class='col-sm-4'>
-        <div class="card" >
+
+  
+    <div class='row-section card-deck'>
+        
+        
+          {% for repo in repo_list %}
+          <div class="card " >
             <div class="card-body">
-              <h5 class="card-title">{{ repo.0 }}</h5>
+              <h5 class="card-title"><a href={{repo.2}}></a>{{ repo.0 }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">By {{repo.1}}</h6>
               <h6 style='font-size:12px;' class="card-subtitle mb-2 text-muted">created at {{repo.4}}</h6>
               <p class="card-text">{{repo.11}}</p>
@@ -147,13 +186,18 @@
                 <p style='margin-right:10px;color:#E0FBFC;font-size:12px;'>Topics: </p>
                 <p style='font-size:12px;'>{{repo.10}}</p>
             </div>
-              <a href="#" class="card-link">visit website</a>
+           
+              <a href={{repo.3}} class="card-link">visit website</a>
              
             </div>
         </div>
+
+        {%endfor%}
+
+        
         
     </div>
-    {%endfor%}
     
-</div>
+    
+
 {%endblock%}

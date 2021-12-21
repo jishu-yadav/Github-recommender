@@ -21,6 +21,10 @@
 
         justify-content:start ;
         align-items: center;
+        width:40%;
+        margin-right:10px;
+        margin-left:10px;
+
 
     }
     .img-circle{
@@ -56,6 +60,7 @@
     }
     .dropdown{
         margin-right:20px;
+        margin-bottom: 10px;
         
     }
     .dropdown .btn{
@@ -95,6 +100,11 @@
         }
         .avatar{
             margin-bottom:20px;
+        }
+    }
+    @media screen and (max-width:598px) {
+        .card{
+            width:90%
         }
     }
 </style>
@@ -145,65 +155,31 @@
       </div>
 </div>
 
-<div class='row-section'>
-    <div class='col-sm-9'>
+<div class='row-section card-deck'>
+    {%for  user in user_list%}
+    
         <div class="card" >
             <div class='avatar'>
-               <div class='img-circle'></div>
+               
+                   <img class='img-circle' src={{user.1}}>
+               
             </div>
             <div class="card-body">
               <div class='name'>
-                <i class="card-title">Priyanka7011</i>
-                <i class="card-subtitle mb-2 text-muted">(Priyanka Kumari)</i>
+                <i class="card-title"><a href={{user.2}}> {{user.0}} </a></i>
+                <i class="card-subtitle mb-2 text-muted">({{user.3}})</i>
               </div>
-              <h6 style='font-size:12px;' class="card-subtitle mb-2 text-muted">63 Public repositories</h6>
+              <h6 style='font-size:12px;' class="card-subtitle mb-2 text-muted">{{user.4}} Public repositories</h6>
               <div style="display: flex;flex-direction: row;margin-top:8px">
                 <p style='margin-right:10px;color:#E0FBFC;font-size:12px;'>Expertise : </p>
                 <p style='font-size:12px;'>css,html,python</p>
             </div>
               
-             
-              
-              <p style='margin-right:10px;color:#E0FBFC;font-size:14px;'>Top repositories </p>
-              <div>
-                <div style="display: flex;flex-direction: row;align-items:start;justify-content:start;">
-                    <div style='width:20%'>
-                        <p class='card-subtitle' style='font-size:14px ;margin-right:10px;margin-bottom:0px;text-align: left;'>Repo name:</p>
-                        <div style='font-size:12px' class='fa fa-star icon'> 12</div> 
-                    </div>
-                    
-                    <p class="card-text" style='width:80%'>Some quick example text to build on Some quick example text to build on.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                
-              </div>
-              <div>
-                <div style="display: flex;flex-direction: row;align-items:start;justify-content:start;">
-                    <div style='width:20%'>
-                        <p class='card-subtitle' style='font-size:14px ;margin-right:10px;margin-bottom:0px;text-align: left;'>Repo name:</p>
-                        <div style='font-size:12px' class='fa fa-star icon'> 12</div> 
-                    </div>
-                    
-                    <p class="card-text" style='width:80%'>Some quick example text to build on Some quick example text to build on.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                
-              </div>
-              <div>
-                <div style="display: flex;flex-direction: row;align-items:start;justify-content:start;">
-                    <div style='width:20%'>
-                        <p class='card-subtitle' style='font-size:14px ;margin-right:10px;margin-bottom:0px;text-align: left;'>Repo name:</p>
-                        <div style='font-size:12px' class='fa fa-star icon'> 12</div> 
-                    </div>
-                    
-                    <p class="card-text" style='width:80%'>Some quick example text to build on Some quick example text to build on.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                
-              </div>
-              
-             
-            </div>
+             </div>
         </div>
         
-    </div>
+   
+    {%endfor%}
     
 </div>
 {%endblock%}
