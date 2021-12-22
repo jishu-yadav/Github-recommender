@@ -16,3 +16,5 @@ def form_res(request):
 
 def user_rec(request):
     return render(request,'user_rec.html')
+
+

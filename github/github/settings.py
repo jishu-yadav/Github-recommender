@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recommender'
+    'recommender',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,9 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -67,6 +71,22 @@ TEMPLATES = [
         },
     },
 ]
+
+
+AUTHENTICATION_BACKENDS = [
+
+
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.linkedin.LinkedinOAuth2',
+
+
+    'django.contrib.auth.backends.ModelBackend',
+
+
+]
+
+
 
 WSGI_APPLICATION = 'github.wsgi.application'
 
@@ -99,6 +119,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Internationalization
@@ -114,6 +136,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+SOCIAL_AUTH_GITHUB_KEY = 'ff27573405819a5c40c2'     # github id     
+SOCIAL_AUTH_GITHUB_SECRET = 'b9a34ee33b9131254d9cadde145d3bde33d6aef2'  # github secret key
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
