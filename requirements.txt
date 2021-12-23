@@ -35,6 +35,7 @@ django-cors-headers==3.7.0
 django-environ==0.4.5
 django-flat-responsive==2.0
 django-flat-theme==1.1.4
+django-heroku==0.3.1
 django-js-asset==1.2.2
 django-redirect-to-non-www==0.1.1
 django-rest-auth==0.9.5
@@ -52,6 +53,7 @@ geomet==0.2.1.post1
 gitdb==4.0.7
 GitPython==3.1.18
 google-play-scraper==1.0.0
+gunicorn==20.1.0
 html5lib==1.1
 idna==3.2
 jmespath==0.10.0
