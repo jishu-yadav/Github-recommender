@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-kma&gy*l%vv#6$n9k!mxep*zh=--j-%x*!n4x)!ow4c!m)vqwp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['github.herokuapp.com']
 
 
 # Application definition
@@ -104,10 +105,10 @@ WSGI_APPLICATION = 'github.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Recommender',
-        'USER':'postgres',
-        'PASSWORD':'1234',
-        'HOST':'localhost',
+        'NAME': 'db7mak8auei4qj',
+        'USER':'yndhagcpymmofz',
+        'PASSWORD':'1ab48beb73cacff16ec59164e822b1f993649398f77d484411a7f7d42ccdb446',
+        'HOST':'ec2-18-210-118-224.compute-1.amazonaws.com',
         'POST':'5432',
     }
 }
@@ -152,8 +153,10 @@ SOCIAL_AUTH_GITHUB_SECRET = 'b9a34ee33b9131254d9cadde145d3bde33d6aef2'  # github
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+
 STATIC_ROOT= os.path.join(BASE_DIR,'static')
+STATIC_URL = "/static/"
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

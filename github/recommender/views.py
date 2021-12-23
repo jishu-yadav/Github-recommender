@@ -158,7 +158,8 @@ def logout_view(request):
 def org_recs(request):
     owner=request.user.username
     print(owner)
-    repos=requests.get('https://api.github.com/search/repositories?q=user:'+owner+'+sort:stars',headers={'Authorization':'token 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'}).json()
+    repos=requests.get('https://api.github.com/search/repositories?q=user:'+owner+'+sort:stars').json()
+    print(repos)
     repo_det=" "
     for repo in repos['items']:
       repo_name = str(repo['name'])
