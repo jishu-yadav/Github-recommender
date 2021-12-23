@@ -83,15 +83,16 @@ def form_contributors_res(request):
     return render(request,'form_contributors.html',context)
 
 def lang_topic_list():
-    lang_list=list(GithubRepos.objects.all().values('content'))
+    lang_list=list(GithubRepos.objects.all().values('languages'))
     topic_list=list(GithubRepos.objects.all().values('topics'))
+    print(lang_list)
     size=len(topic_list)
     print(size)
     token_list=[]
     lang_token=[]
     for i in range(0,size):
         temp=topic_list[i]['topics'].split("'")
-        lang_temp=lang_list[i]['content'].split("'")
+        lang_temp=lang_list[i]['languages'].split("'")
         stop_words=['[',']',',',', ','[]','([','([])','])',', ']
         for k in lang_temp:
             if k not in stop_words:
@@ -112,6 +113,7 @@ def lang_topic_list():
 def form_res(request):
     
     lang_token,token_list=lang_topic_list()
+    print(lang_token)
     context={
         'token_list':token_list,
         'lang_token':lang_token,
@@ -136,7 +138,7 @@ def user_rec(request):
         dictionary,tfidf,index,lsi=fit(df['all_repos'])
         #print(cosine_sim)
         user_list=user_recs(dictionary,tfidf,index,lsi,desc)
-        print(user_list[0])
+        #print(user_list[0])
 
         context={
             "user_list":user_list

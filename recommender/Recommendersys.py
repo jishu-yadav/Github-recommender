@@ -9,9 +9,9 @@ from gensim.parsing.preprocessing import preprocess_documents
 df=pd.DataFrame((list(GithubRepos.objects.all().values())))
 def fit(keywords):
   df['description'].fillna('').astype(str)
-  df['languages']=df['languages'].map(str)
+  df['content']=df['content'].map(str)
 
-  text_corpus = df['languages'].values
+  text_corpus = df['content'].values
 
   processed_corpus = preprocess_documents(text_corpus)
   dictionary = gensim.corpora.Dictionary(processed_corpus)
@@ -43,6 +43,7 @@ def get_index_from_owner(project_desc):
   return df[df.topics == project_desc]['id'].values[0]
 
 def recommendations(dictionary,tfidf,index,lsi,desc):
+  print(desc)
   new_doc=gensim.parsing.preprocessing.preprocess_string(desc)
   new_vec = dictionary.doc2bow(new_doc)
   vec_bow_tfidf = tfidf[new_vec]
@@ -52,9 +53,10 @@ def recommendations(dictionary,tfidf,index,lsi,desc):
   repo_det=[]
 
   for s in sorted(enumerate(sims), key=lambda item: -item[1])[:10]:
+    print(df["full_name"].iloc[s[0]],s[1])
     repo_det.append([df["full_name"].iloc[s[0]],df["owner"].iloc[s[0]],df["github_url"].iloc[s[0]],df["homepage"].iloc[s[0]],
     df["created_at"].iloc[s[0]],df["fork_counts"].iloc[s[0]],df["open_issues"].iloc[s[0]],df["stargazers_count"].iloc[s[0]],
-    df["watchers"].iloc[s[0]],df["content"].iloc[s[0]],df["topics"].iloc[s[0]],df["description"].iloc[s[0]]])
+    df["watchers"].iloc[s[0]],df["languages"].iloc[s[0]],df["topics"].iloc[s[0]],df["description"].iloc[s[0]]])
     #print(df["full_name"].iloc[s[0]] , {str(s[1])})
 
   return repo_det

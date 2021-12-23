@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-kma&gy*l%vv#6$n9k!mxep*zh=--j-%x*!n4x)!ow4c!m)vqwp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['github.herokuapp.com']
+ALLOWED_HOSTS = ['github.herokuapp.com','localhost']
 
 
 # Application definition
@@ -112,6 +112,8 @@ DATABASES = {
         'POST':'5432',
     }
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
