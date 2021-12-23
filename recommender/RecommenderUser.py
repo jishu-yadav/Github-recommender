@@ -6,7 +6,7 @@ from .models import *
 import gensim
 from gensim.parsing.preprocessing import preprocess_documents
 
-#df=pd.DataFrame((list(GithubUsers.objects.all().values())))
+df=pd.DataFrame((list(GithubUsers.objects.all().values())))
 
 def fit(keywords):
   
