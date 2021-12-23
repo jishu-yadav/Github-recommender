@@ -7,9 +7,11 @@ import gensim
 from gensim.parsing.preprocessing import preprocess_documents
 
 df=pd.DataFrame((list(GithubRepos.objects.all().values())))
-def fit(keywords):
+def fit_repos(keywords):
   df['description'].fillna('').astype(str)
   df['content']=df['content'].map(str)
+
+  print(df['content'])
 
   text_corpus = df['content'].values
 

@@ -55,7 +55,7 @@ def repo_rec(request):
     
         df=pd.DataFrame((list(GithubRepos.objects.all().values())))
         print(df.head())
-        dictionary,tfidf,index,lsi=fit(df['content'])
+        dictionary,tfidf,index,lsi=fit_repos(df['content'])
         #print(cosine_sim)
         repo_list=recommendations(dictionary,tfidf,index,lsi,desc)
         print(repo_list[0][9])
