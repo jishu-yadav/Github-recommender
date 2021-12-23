@@ -6,7 +6,7 @@ from .models import *
 import gensim
 from gensim.parsing.preprocessing import preprocess_documents
 
-df=pd.DataFrame((list(GithubRepos.objects.all().values())))
+#df=pd.DataFrame((list(GithubRepos.objects.all().values())))
 def fit(keywords):
   df['description'].fillna('').astype(str)
   df['languages']=df['languages'].map(str)
