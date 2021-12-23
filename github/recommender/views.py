@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
 import json
 from django.contrib.staticfiles.storage import staticfiles_storage
+from django.contrib.auth import logout
 from .Recommendersys import *
 from .RecommenderUser import *
 from .models import *
 import pandas as pd
 import numpy as np
+import requests
 # Create your views here.
 
 def lang_topic_list():
@@ -146,3 +148,44 @@ def user_rec(request):
     #print(list_repo)
     
     return render(request,'user_rec.html',context)
+
+def logout_view(request):
+    logout(request)
+
+    return redirect('index')
+
+
+def org_recs(request):
+    owner=request.user.username
+    print(owner)
+    repos=requests.get('https://api.github.com/search/repositories?q=user:'+owner+'+sort:stars',headers={'Authorization':'token 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'}).json()
+    repo_det=" "
+    for repo in repos['items']:
+      repo_name = str(repo['name'])
+      language = str(repo['language'] )
+      topic=str(repo['topics'])
+      #repo_info = requests.get('https://api.github.com/repos/'+owner+'/'+repo_name)
+      
+      desc=str(repo['description'])
+      repo_det+=repo_name+" "+language+" "+desc+" "+topic+" "
+
+    #print(repo_det)
+        
+    df=pd.DataFrame((list(GithubUsers.objects.all().values())))
+    print(df.head())
+    dictionary,tfidf,index,lsi=fit(df['all_repos'])
+    #print(cosine_sim)
+    user_orgs=orgs_recs_user(dictionary,tfidf,index,lsi,desc)
+    print(user_orgs)
+
+
+    context={
+        'user_orgs':user_orgs
+    }
+
+
+
+    
+
+
+    return render(request,'org_rec.html',context)

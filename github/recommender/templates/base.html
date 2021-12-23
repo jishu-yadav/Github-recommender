@@ -47,13 +47,18 @@
               <li class="active"><a href="{%url 'homepage'%}">Home</a></li>
               <li><a href="{%url 'form_res'%}">Find Project </a></li>
               <li><a href="{%url 'form_contributors_res'%}">Find Contributors</a></li>
-              <li><a href="#">Find Organisation</a></li>
+              <li><a href="{%url 'org_recs'%}">Find Organisation</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              
+              {% if request.user.is_authenticated %}
+              <li><a href="#" style='color:white'><span class="glyphicon glyphicon-user"></span> {{request.user}}</a></li>
+              <li><a href="#">LogOut</a></li>
+              {% else %}
               <li><a href="{% url 'social:begin' 'github' %}"><span class="glyphicon glyphicon-log-in"></span> Login
-              </a>
-              </li>
+              </a> </li>
+              {% endif %}
+             
             </ul>
           </div>
         </div>

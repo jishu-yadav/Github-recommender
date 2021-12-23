@@ -28,7 +28,7 @@ def fit(keywords):
 
 
 
-def org_recs(dictionary,tfidf,index,lsi,desc):
+def orgs_recs_user(dictionary,tfidf,index,lsi,desc):
   new_doc=gensim.parsing.preprocessing.preprocess_string(desc)
   new_vec = dictionary.doc2bow(new_doc)
   vec_bow_tfidf = tfidf[new_vec]
