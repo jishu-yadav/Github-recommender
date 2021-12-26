@@ -37,8 +37,7 @@ For this we created user profile based on their activity and work done in past. 
 5) Deployed on Heroku
 6) Github API for collecting data
 
-# Github-recommender-application
-Link : http://github-recommender-hackathon.herokuapp.com/
+# Link : http://github-recommender-hackathon.herokuapp.com/
 
 ## How to run 
 1. Clone the repo to your local system
