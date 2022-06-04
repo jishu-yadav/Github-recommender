@@ -1,5 +1,8 @@
 # OpenSourceBuddy : Get personalized recommendation for all your open source needs!
 
+![image](https://user-images.githubusercontent.com/54631311/171985895-1fb0119c-7ccd-4c8f-9273-a3924a2481be.png)
+
+
 An opensource community is a loosely organized, ad-hoc community of contributors from all over the world 
 who share an interest in meeting a common need, ranging from minor projects to huge developments.
 The diverse and highly motivated open source community is the harbinger of innovation
